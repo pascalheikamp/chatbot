@@ -5,6 +5,10 @@
 }
 /* The main container */
 
+body {
+    background: black;
+}
+
 .container {
     width: 80%;
     margin: auto;
@@ -179,6 +183,7 @@ received-chats-img {
     width: 100%;
     box-shadow: rgb(0 0 0 / 25%) 0px 5px 5px 2px;
 }
+
 p {
     overflow-wrap: break-word;
 }
