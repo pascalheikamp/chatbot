@@ -13,44 +13,41 @@
     <div class="msg-header">
         <div class="container1">
 
-            <!--            <img src="user1.png" class="msgimg">-->
             <div class="active ">
                 <p>User name</p>
             </div>
         </div>
     </div>
-    <!-- Message header section ends -->
-
-    <!-- Chat inbox section starts -->
 
     <div class="chat-page">
-        <div class="msg-inbox">
+        <div id="msg-inbox" class="msg-inbox">
             <div class="chats">
                 <div class="msg-page">
                     <div class="received-chats">
+                        <div class="incoming-chats-img">
 <!--                                                Here create new element and classlist when click on button-->
-                        <div class="profile-img">
 <!--                            <img src="assets/profile.png">-->
 
                         </div>
-                        <div class="received-msg">
-                            <div class="received-msg-inbox">
-<!--                                <p>This is a message</p>-->
-                                <!--                                <p>Hi !! This is message from Riya . Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non quas nemo eum, earum sunt, nobis similique quisquam eveniet pariatur commodi modi voluptatibus iusto omnis harum illum-->
-                                <!--                                    iste distinctio expedita illo!</p>-->
-<!--                                <span class="time">18:06 PM | July 24 </span>-->
+                        <div style="display: flex; flex-direction: column;">
+                            <div style="display: flex; justify-content: space-around;">
+                                <div class="content" style="flex-direction: column; display: flex">
+                                </div>
+                            </div>
+                                <div class="content-1">
+                                    <div class="message">
+                                </div>
                             </div>
                         </div>
-                        <!--                        This is the end-->
                     </div>
                     <!-- Contains the incoming and outgoing messages -->
                     <div class="outgoing-chats">
                         <div class="outgoing-chats-img">
-                            <img src="assets/robot.jpg">
+<!--                            <img src="assets/robot.jpg">-->
 
                         </div>
                         <div class="outgoing-msg">
-                            <div class="outgoing-chats-msg">
+                            <div id="outgoing-chats-msg" class="outgoing-chats-msg">
 <!--                                <p class="multi-msg">Hi riya , Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
 <!--                                    Illo nobis deleniti earum magni recusandae assumenda.-->
 <!--                                </p>-->
@@ -61,22 +58,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="received-chats">
-                        <!--                                                Here create new element and classlist when click on button-->
-                        <!--                        <div class="received-chats-img">-->
-                        <!--                            <img src="assets/profile.png">-->
-
-                        <!--                        </div>-->
-                        <div class="received-msg">
-                            <div class="received-msg-inbox">
-                                <!--                                <p>This is a message</p>-->
-                                <!--                                <p>Hi !! This is message from Riya . Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non quas nemo eum, earum sunt, nobis similique quisquam eveniet pariatur commodi modi voluptatibus iusto omnis harum illum-->
-                                <!--                                    iste distinctio expedita illo!</p>-->
-                                <span class="time">18:06 PM | July 24 </span>
-                            </div>
-                        </div>
-                        <!--                        This is the end-->
-                    </div>
                 </div>
             </div>
 
@@ -85,7 +66,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Write message...">
                     <div class="input-group-append ">
-                        <button id="sendButtonId" class="sendButton"><span class="input-group-text send-icon "><i
+                        <button id="send-button" class="sendButton"><span class="input-group-text send-icon "><i
                                 class="bi bi-send "></i>
                             </span></button>
                     </div>

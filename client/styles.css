@@ -6,7 +6,13 @@
 /* The main container */
 
 body {
-    background: black;
+    background: white;
+}
+
+.profile {
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;
 }
 
 .container {
@@ -164,16 +170,50 @@ received-chats-img {
 }
 
 .received-msg {
-    display: inline-block;
-    padding: 0 0 0 10px;
-    vertical-align: top;
-    width: 92%;
+    display: flex;
+    flex-direction: column;
 }
 .received-msg-inbox {
-    width: 57%;
+   display: flex;
 }
 
+.content p {
+    display: flex;
+    background: #efefef none repeat scroll 0 0;
+    border-radius: 10px;
+    color: #646464;
+    font-size: 14px;
+    margin-left: 1rem;
+    padding: 1rem;
+    box-shadow: rgb(0 0 0 / 25%) 0px 5px 5px 2px;
+}
+
+.content-1 p {
+    display: flex;
+    background: #efefef none repeat scroll 0 0;
+    border-radius: 10px;
+    color: #646464;
+    font-size: 14px;
+    margin-top: 3em;
+    margin-left: 1rem;
+    padding: 1rem;
+    box-shadow: rgb(0 0 0 / 25%) 0px 5px 5px 2px;
+}
+
+/*.content-1 {*/
+/*    display: flex;*/
+/*    flex-direction: column-reverse;*/
+/*}*/
+
+/*.message {*/
+/*    display: flex;*/
+/*    flex-direction: column-reverse;*/
+/*}*/
+
+
 .received-msg-inbox p {
+    display: flex;
+    justify-content: end;
     background: #efefef none repeat scroll 0 0;
     border-radius: 10px;
     color: #646464;
@@ -182,6 +222,31 @@ received-chats-img {
     padding: 1rem;
     width: 100%;
     box-shadow: rgb(0 0 0 / 25%) 0px 5px 5px 2px;
+}
+/*#msg-inbox p {*/
+/*    background: #efefef none repeat scroll 0 0;*/
+/*    border-radius: 10px;*/
+/*    color: #646464;*/
+/*    font-size: 14px;*/
+/*    margin-left: 1rem;*/
+/*    padding: 1rem;*/
+/*    width: 100%;*/
+/*    box-shadow: rgb(0 0 0 / 25%) 0px 5px 5px 2px;*/
+/*}*/
+.received-msg-inbox-output p {
+    background: #efefef none repeat scroll 0 0;
+    border-radius: 10px;
+    color: #646464;
+    font-size: 14px;
+    margin-left: 1rem;
+    padding: 1rem;
+    width: 100%;
+    box-shadow: rgb(0 0 0 / 25%) 0px 5px 5px 2px;
+}
+
+.received-msg {
+    display: flex;
+    flex-direction: column;
 }
 
 p {

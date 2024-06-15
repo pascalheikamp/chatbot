@@ -1,63 +1,71 @@
-let incomingMessage = document.querySelector("received-chats");
+let questionInput = document.querySelector(".form-control");
+window.addEventListener('load', init)
+let sendButton;
+let inputField
+let firstMessageBox;
+let secondMessageBox;
+let chatHistory;
+
+function init() {
+    sendButton = document.getElementById('send-button');
+    firstMessageBox = document.querySelector(".content");
+    secondMessageBox = document.querySelector(".content-2");
+    inputField = document.querySelector(".form-control");
+    sendButton.addEventListener('click', submitMessage);
+}
 
 
-let sendButton = document.getElementById("sendButtonId");
+async function submitMessage() {
+    createUserMessage(inputField.value);
+    await fetch('http://localhost:8000/chat', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            "question": questionInput.value || localStorage.getItem("chatHistory")
+        })
+    }).then((response) => response.json())
+        .then((data) => [createBotMessage(data), saveChatHistory(data, questionInput.value)])
+        .catch((error) => console.log('data couldnt load: ' + error))
+}
 
-// console.log(sendButton)
+function createUserMessage(value) {
+    let messageElement = document.createElement("p");
+    let userImage = document.createElement("img");
+    userImage.src="assets/profile.png"
+    userImage.classList.add("profile")
+    messageElement.textContent = value
+    firstMessageBox.appendChild(userImage);
+    firstMessageBox.append(messageElement);
+}
 
-sendButton.addEventListener("click", async () => {
-    let questionInput = document.querySelector(".form-control");
-    let receivedMessageInbox = document.querySelector(".received-msg-inbox");
-    let userImageContainer = document.querySelector(".profile-img");
-    let imageElement = document.createElement("img");
-    imageElement.src = "assets/profile.png";
-    let incomingMessageElement = document.createElement("p");
+function createBotMessage(data) {
+    let messageElement = document.createElement("p");
+    let message = JSON.stringify(data.kwargs.content);
+    messageElement.textContent = message;
+    let userImage = document.createElement("img");
+    userImage.src="assets/robot.jpg"
+    userImage.classList.add("robot")
+    firstMessageBox.appendChild(userImage);
+    firstMessageBox.append(messageElement);
+}
 
-    let aiImage = document.createElement("img");
-    // receivedMessageInbox.classList.add("message")
-    // messageElement.textContent = questionInput.value
-    // receivedMessageInbox.appendChild(messageElement);
-
-    let outgoingMessageInbox = document.querySelector(".outgoing-chats-msg");
-    let outcomingMessageElement = document.createElement("p");
-
-
-    if (questionInput.value !== "" && !undefined) {
-        function showChatResponse(data) {
-            if(!data) {
-                console.log("error")
-            } else {
-                let outgoingMessage = JSON.stringify(data.kwargs.content);
-                outcomingMessageElement.textContent = outgoingMessage;
-                outgoingMessageInbox.appendChild(outcomingMessageElement);
-                console.log("succesfull" + data)
-            }
-        }
-        incomingMessageElement.textContent = questionInput.value;
-        if(userImageContainer) {
-            userImageContainer.appendChild(imageElement);
-        } else {
-            // userImageContainer.classList.add("next-profile-img")
-            receivedMessageInbox.appendChild(imageElement);
-        }
-        receivedMessageInbox.appendChild(incomingMessageElement);
-        userImageContainer.classList.remove("profile-img")
-        await fetch('http://localhost:8000/chat', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                "question": questionInput.value
-            })
-        }).then((response) => response.json())
-            .then((data) => showChatResponse(data))
-            .catch((error) => console.log('data couldnt load: ' + error))
-    } else {
-        console.log("Please enter a message")
+function saveChatHistory(chatResponse, sendData) {
+    let chatObject = {
+        userMessage: sendData,
+        aiResponse: chatResponse.kwargs.content
     }
-})
 
+    let storage = localStorage.getItem("chatHistory");
+    chatHistory = JSON.parse(storage);
+    if (chatHistory == null) {
+        chatHistory = []
+    }
+    chatHistory.push(chatObject)
+    let stringifiedChatHistory = JSON.stringify(chatHistory);
+    localStorage.setItem("chatHistory", stringifiedChatHistory);
 
-console.log("works")
+    console.log(localStorage.getItem("chatHistory"));
+}
