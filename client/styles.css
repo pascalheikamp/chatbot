@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2025 
+ *   All rights reserved.
+ */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
     box-sizing: border-box;
@@ -5,8 +9,62 @@
 }
 /* The main container */
 
+.input-container {
+    display: block;
+    padding-top: 1em;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2em;
+}
+
+.input-section {
+    text-align: center;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: space-between;
+    display: flex;
+}
+
+.sidebar {
+    position: sticky;
+    width: 15%;
+    height: 100vh;
+    background: #e9ecef;
+    font-size: 0.65em;
+  }
+  
+  .nav {
+    position: absolute;
+    text-align: center;
+   
+    font-weight: bold;
+  }
+  
+  .nav ul {
+    list-style: none;
+    
+    li {
+      position: relative;
+      margin: 3.2em 0;
+      
+      a {
+        line-height: 5em;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.4em;
+        color: rgba(#FFF, 0.35);
+        display: block;
+        transition: all ease-out 300ms;
+      }
+    }
+}
+      
+
 body {
     background: white;
+    display: flex;
+    gap: 3em;
+    align-content: space-around;
 }
 
 .profile {
@@ -31,9 +89,11 @@ img {
 }
 /* Styling the msg-header container */
 .msg-header {
+    padding-left: 4em;
     border: 1px solid #ccc;
+    margin-right: 3em;
     width: 100%;
-    height: 10%;
+    height: auto;
     border-bottom: none;
     display: inline-block;
     background-color: #efefef;
@@ -47,11 +107,27 @@ img {
     float: left;
 }
 
+.moves-container {
+    background-color: whitesmoke;
+    border: 1px solid;
+    height: 12em;
+    width: 10em;
+    flex-direction: column;
+}
+
+.enemymoves-container{
+    background-color: whitesmoke;
+    border: 1px solid;
+    height: 12em;
+    width: 10em;
+    flex-direction: column;
+}
+
 .container1 {
     width: 270px;
     height: auto;
     float: left;
-    margin: 0;
+    margin-right: 4em;
 }
 
 /* styling user-name */
@@ -77,6 +153,14 @@ img {
     border-bottom-right-radius: 20px;
 }
 
+.pokemonInputButton {
+    width: 6em;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 .chats {
     padding: 30px 15px 0 25px;
@@ -99,7 +183,7 @@ img {
 /* Styling the input field */
 .input-group {
     float: right;
-    margin-top: 13px;
+    margin-top: 10px;
     margin-right: 20px;
     outline: none !important;
     border-radius: 20px;
@@ -152,6 +236,11 @@ img {
     cursor: pointer;
 }
 
+.sendButton {
+    display: flex;
+   margin-left: 8em;
+}
+
 input:focus {
     outline: none;
     border: none !important;
@@ -160,6 +249,13 @@ input:focus {
 
 .send-icon {
     font-weight: bold !important;
+}
+
+.input-group-append {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5em;
+    margin-top: 1em;
 }
 
 /* Styling the avatar  */
